@@ -1,0 +1,57 @@
+{
+  "header": {
+    "usuario":"usuario",
+    "salir":"salir",
+    "fecha":"fecha"
+  },
+  "barra_menus": {
+    "administracion":"Administración",
+    "reportes":"Reportes",
+    "subMenus" : {
+        "loginApp" : "Login App",
+        "centroNot" : "Centro de Notoficaciones",
+        "mialcancia" : "mialcancia",
+        "jsonToExcel" : "Convertir Json to Excel"
+    }
+  },
+  "footer": {
+    "informacion1":":: Todos los derechos reservados ::",
+    "informacion2":"Todos los movimientos son registrados y sujetos a auditorías",
+    "informacion3":"REV 1"
+  },
+  "general": {
+    "label": {
+    },
+    "tabla": {
+
+    },
+    "paginador": {
+        "anterior": "Anterior",
+        "siguiente": "Siguiente"
+    },
+    "combo":{
+      "cmb_select": "SELECCIONE..."
+    },
+    "botones":{
+      "btn_siguiente": "Siguiente",
+      "btn_guardar": "Guardar",
+      "btn_agregar": "Agregar",
+      "btn_cancelar": "Cancelar",
+      "btn_buscar": "Buscar",
+      "btn_anterior": "Anterior",
+      "btn_actualizar": "Actualizar",
+      "btn_salir": "Salir",
+      "btn_limpiar":"Limpiar",
+      "btn_aceptar": "Aceptar",
+      "btn_cargar": "Cargar",
+      "btn_cerrar":"Cerrar"
+    },
+    "titulos":{
+      "title_header":"Creación de noticias"
+    }
+  },
+  "login": {
+    "usuario": "Usuario: ",
+    "contrasenia": "Contraseña: "
+  }
+}

@@ -2,9 +2,17 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: `
+  <div class="container pt-3">
+      <router-outlet></router-outlet>
+  </div>`,
+  providers: []
 })
+
 export class AppComponent {
-  title = 'portal-noticias';
+  constructor() {
+  }
+
 }
+
+

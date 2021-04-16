@@ -1,0 +1,20 @@
+header {
+	background-color: #006242;
+	font-size: 18px;
+	font-family:Arial,Verdana,sans-serif;
+	border: 3px solid green;
+}
+
+.separador {
+	color: orange;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.center {
+	text-align: center;
+  }
+ 
+  .rigth {
+	text-align: right;
+  } 

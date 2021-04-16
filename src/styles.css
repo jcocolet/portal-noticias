@@ -1,1 +1,71 @@
 /* You can add global styles to this file, and also import other style files */
+/* @import "../node_modules/bootstrap/dist/css/bootstrap.min.css"; */
+/* You can add global styles to this file, and also import other style files */
+body {
+	background-color: #f2f2f2;
+}
+
+td {
+	font-family: Arial;
+	font-size: 13px;
+}
+
+div.modal-backdrop {
+	pointer-events: none;
+}
+
+input[type="date"] {
+	font-size: 11px !important;
+}
+
+#loading {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-color: #000;
+    z-index: 100;
+    text-align: center;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";       /* IE 8 */
+    filter: alpha(opacity=50);  /* IE 5-7 */
+    -moz-opacity: 0.5;          /* Netscape */
+    -khtml-opacity: 0.5;        /* Safari 1.x */
+    opacity: 0.5;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+ }
+
+ #loading-image {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left: -50px;
+  margin-right: -100px;
+
+ }
+
+
+ hr.style18:before {
+	display: block;
+	content: "";
+	height: 20px;
+	margin-top: -21px;
+	border-style: solid;
+	border-color: orange;
+	border-width: 0 0 .5px 0;
+	border-radius: 5px;
+  }
+  .campoObligatorio {
+    color:red;
+    float: left;
+    font-size: 10px;
+    font-weight: bold;
+}
+.obligatorio{
+    content: "*";
+    color:red;
+}
+
+
+
