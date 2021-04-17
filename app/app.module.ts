@@ -7,13 +7,10 @@ import { AlertService } from './servicios/alert.service';
 import { AppComponent } from './app.component';
 import { AppService } from './app.service';
 import { NavigationAuthGuardService} from './navigationAuthGuard.service';
-import { RoutingModule } from './app.routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { HomeModule } from './vistas/home/home.module';
-import {MatTableModule} from '@angular/material/table';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import { ComponentesComunesModulo } from './commons/common.module';
-import {MatRadioModule} from '@angular/material/radio';
+import { AppRoutingModule } from './app.routing.module';
+import { HomeModule } from './commons/home/home.module';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -21,12 +18,8 @@ import {MatRadioModule} from '@angular/material/radio';
   imports: [
     HttpClientModule,
     BrowserModule,
-    RoutingModule,
-    HomeModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatRadioModule,
-    ComponentesComunesModulo
+    AppRoutingModule,
+    HomeModule
   ],
   providers: [
     ApiService,
