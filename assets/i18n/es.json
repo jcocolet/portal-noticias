@@ -23,6 +23,10 @@
     "label": {
     },
     "tabla": {
+      "seccion":"Sección",
+      "titulo_noticia": "Titulo de la Noticia",
+      "fecha_noticia" : "Fecha de la Noticia",
+      "accion" : "Acción"
 
     },
     "paginador": {
@@ -44,10 +48,13 @@
       "btn_limpiar":"Limpiar",
       "btn_aceptar": "Aceptar",
       "btn_cargar": "Cargar",
-      "btn_cerrar":"Cerrar"
+      "btn_cerrar":"Cerrar",
+      "btn_agregar_noticia":"Agregar noticia"
     },
     "titulos":{
-      "title_header":"Creación de noticias"
+      "title_header":"Portal de noticias",
+      "title_consulta":"Creación de noticias",
+      "title_alta":"Alta de noticias"
     }
   },
   "login": {
