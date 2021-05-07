@@ -1,16 +1,14 @@
 export class Constants {
 
   // public URL = 'http://localhost:8083';
-  public URL = 'http://10.95.69.113:8081/';
-  public static URL_LOGIN_APP: string = '/bdm/api/v1/dologin';
-  public static URL_CONSULTA_MENSAJES_CLIENTES: string = '/app/mensajes/getMensajes/';
+  public URL = 'http://localhost:8080/';
 
-  // CARGA MASIVA JSON TO EXCEL
-  public static URL_REPORTE: string = '/api/getReporte/JCC.xlsx';
-  public static POST_FILE: string = '/api/cargaMasiva/getJsonToExcel';
+  public static URL_CONSULTA_NOTICIAS_LOCAL: string = 'portal/getNoticias';
+  public static URL_GUARDAR_NOTICIAS_LOCAL: string = 'portal/guardaNoticias';
+  public static URL_CONSULTA_NOTICIAS_TIPO: string = 'portal/getNoticias/noticiaTipo?selectTipoNoti=';
+  public static URL_DELETE_NOTICIAS_TIPO: string = 'portal/eliminarNoticias';
+  
+  
 
-  // CALCULO DE SUENIO MI ALCANCIA
-  public static POST_CALCULAR_SUENIO: string = '/api/calculo/suenio';
-  public static URL_CONSULTAWS: string = '/bdm/api/v1/consulta';
 
 }

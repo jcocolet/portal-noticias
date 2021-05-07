@@ -1,0 +1,115 @@
+<div class="main border border-dark rounded-bottom">
+    <app-loading [loading] ="loading"></app-loading>
+<div class="container">    
+    <div class="jumbotron">
+        <h4 class="text-uppercase mt-2 " translate> {{ 'general.titulos.title_consulta' }} </h4>
+            <hr>
+            <app-alert-dos></app-alert-dos>
+        <div class="row">
+            <div class="col-1"></div>
+                    <div class="col">
+                        <a [routerLink]="'/alta'" class="btn btn-outline-primary btn-sm" role="button" data-bs-toggle="button">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                            <span data-toggle="tooltip" title="Agrega nuevas noticias" translate> 
+                                {{ 'general.botones.btn_agregar_noticia'}}
+                                
+                            </span>
+                            </a>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-4">
+                        <select id="selectBox" [(ngModel)]="selectTipoNoti" class="form-control form-control-sm form-select" aria-label="Default select example">
+                        
+                            <option *ngFor="let result of lstCmbTipoNoticia ; let i = index" [value]="result.id">{{result.valor}}</option>
+                        </select>
+                        
+                    </div>           
+            </div>
+            
+            <br>
+            <div class="row justify-content-center p-0 pb-3">
+                <div class="col col-2 col-sm-2 col-md-2 col-lg-2">
+                    <button class="btn btn-outline-primary btn-sm ms-2" (click)="consultaNoticia()" [disabled]="loading" >Consultar</button>
+                    <button class="btn btn-outline-primary btn-sm ms-2 mr-2" (click)="limpiar()" translate> {{ 'Limpiar' }} </button>
+                </div>
+            </div>
+            <br>
+            <br>
+        </div>
+    <div class="row justify-content-center">
+        <div class="">
+            <div class="">
+                <div id="">
+                    <table class="table table-hover table-sm float-none">
+                        <thead class="thead-light">
+                            <tr>
+                                <th class="text-truncate text-center" scope="col" translate> {{ 'general.tabla.seccion'}}</th>
+                                <th class="text-truncate text-center" scope="col" translate> {{ 'general.tabla.titulo_noticia' }} </th>
+                                <th class="text-truncate text-center" scope="col" translate> {{ 'general.tabla.fecha_noticia' }} </th>
+                                <th class="text-truncate text-center" scope="col" translate> {{ 'general.tabla.accion' }} </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr  *ngFor="let result of paginaActual ; let i = index">
+                                
+                                <td  class="text-truncate text-center">{{result.tipo}}</td>
+                                <td class="text-truncate text-center">{{result.tituloNoticia}}</td>
+                                <td class="text-truncate text-center w-5">{{result.fechaPublicacion}}</td>
+                                <td  class="text-truncate text-center w-5 ">
+            
+                                <!-- icono eliminar -->
+                                <a (click)="clearMessage()" 
+                                   (click)="enviaMsjEliminar(result)"  
+                                   class="pl-2" style="color: blue; cursor: pointer; font-size: 18px;">
+                                    <span class="fa fa-trash-o"></span>
+                                </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="row justify-content-center p-0 pb-3">
+                        <div class="col-1 col-sm-1 col-md-1 col-lg-1">
+                            <nav aria-label="...">
+                                <ul class="pagination pagination-sm justify-content-center">
+                                    <li class="page-item">
+                                        <a class="page-link" tabindex="-1" (click)="paginaAnterior()"
+                                        [ngClass]="{'desactivado': numeroPaginaActual ==0 ? true:false }">
+                                            {{ 'Anterior' }}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <select class="page-link" (change)="establecerRegistrosMostrar($event)">
+                                            <option *ngFor="let numRegistros of multiplosPaginador">
+                                                {{ numRegistros }}
+                                            </option>
+                                        </select>
+                                    </li>
+                                    <li class="page-item">
+                                        <a class="page-link" tabindex="-1" (click)="siguientePagina()"
+                                        [ngClass]="{'desactivado': numeroPaginaActual == numeroPaginas-1 || paginaActual.length<=0 ? true:false}">
+                                            {{ 'Siguiente' }}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>   
+
+</div>
+
+    <!-- Modal Eliminar -->
+    <app-eliminar-noticia 
+        [ocultarModal]= "ocultarModal" 
+        (eventOut)="eliminarRegistro()"
+        (eventCancelar) = "ocultarModalOut()">
+    </app-eliminar-noticia>
+

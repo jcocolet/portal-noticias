@@ -10,6 +10,7 @@ import { NavigationAuthGuardService} from './navigationAuthGuard.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app.routing.module';
 import { HomeModule } from './commons/home/home.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,9 @@ import { HomeModule } from './commons/home/home.module';
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    HomeModule
+    HomeModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     ApiService,

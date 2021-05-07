@@ -1,0 +1,22 @@
+
+<div class="fondo-modal" *ngIf="ocultarModal" >
+    <div class="modal fade show" id="exampleModalToggle" tabindex="-1" aria-labelledby="exampleModalLiveLabel" style="display: block;" aria-modal="true" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h3 class="modal-title" id="exampleModalLiveLabel">Eliminar Noticia</h3>
+              <button type="button" class="btn-close" (click)="cancelarModal()" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>¿Está seguro de eliminar la noticia?</p>
+            </div>
+            <div class="modal-footer justify-content-center">
+              <button type="button" class="btn btn-outline-primary btn-sm" (click)="cancelarModal()"  cerrarModal data-bs-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-outline-primary btn-sm" (click)="eliminar()" >Borrar registro</button>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+
+

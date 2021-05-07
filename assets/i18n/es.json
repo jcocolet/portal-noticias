@@ -26,7 +26,9 @@
       "seccion":"Sección",
       "titulo_noticia": "Titulo de la Noticia",
       "fecha_noticia" : "Fecha de la Noticia",
-      "accion" : "Acción"
+      "accion" : "Acción",
+      "numero" : "No.",
+      "nombre_imagen" : "Nombre imagen"
 
     },
     "paginador": {
@@ -53,7 +55,7 @@
     },
     "titulos":{
       "title_header":"Portal de noticias",
-      "title_consulta":"Creación de noticias",
+      "title_consulta":"Consulta de noticias",
       "title_alta":"Alta de noticias"
     }
   },

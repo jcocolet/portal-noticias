@@ -1,0 +1,192 @@
+<div class="main border border-dark rounded-bottom" (change)="clearMessage()">
+    <app-loading [loading] ="loading"></app-loading>
+    <div class="container">    
+        <div class="jumbotron">
+            <h4 class="text-uppercase ml-2 pt-3 " translate> {{ 'general.titulos.title_alta' }} </h4>
+            <hr>
+            <app-alert-dos></app-alert-dos>
+            <div class="row text-right">
+                <div class="col">
+                  <button class="btn btn-outline-primary btn-sm"
+                          routerLink="/home">
+                    <i class="fa fa-arrow-left"></i>
+                    Regresar
+                  </button>
+                </div>
+              </div>
+              <br>
+            <div class="row">
+                
+                    <div class="col-4">
+                        <select id="selectBox" [(ngModel)]="selectTipoNoti" (change)="changeSelect($event)"  class="form-control form-control-sm form-select" aria-label="Default select example">
+                        
+                            <option *ngFor="let result of lstCmbTipoNoticia ; let i = index" [value]="result.id">{{result.valor}}</option>
+                        </select>
+                        
+                    </div>
+                    
+                    <div *ngIf="activa_cmb_local"  class="col-4">
+                        <select [(ngModel)]="cmbSelectLocal" class="form-control form-control-sm form-select" aria-label="Default select example">
+                            <option *ngFor="let result of lstCmbLocal ; let i = index" [value]="result.id">{{result.valor}}</option>
+                        </select>
+                    </div>
+                    <div *ngIf="activa_cmb_municipios"  class="col-4">
+                        <select [(ngModel)]="cmbSelectMunicipio" class="form-control form-control-sm form-select" aria-label="Default select example">
+                            <option *ngFor="let result of lstCmbMunicipios ; let i = index" [value]="result.id">{{result.valor}}</option>
+                        </select>
+                    </div>
+                    <div *ngIf="activa_cmb_seguridad"  class="col-4">
+                        <select [(ngModel)]="cmbSelectSeguridad" class="form-control form-control-sm form-select" aria-label="Default select example">
+                            <option *ngFor="let result of lstCmbSeguridad ; let i = index" [value]="result.id">{{result.valor}}</option>
+                        </select>
+                    </div>
+                     <br>
+                    <div class="col-4">
+                        <div class="form-group  row">
+                            <label for="example-date-input" class="col-3 col-form-label">Fecha publicación:</label>
+                            <div class="col-9">
+                              <input [(ngModel)]="noticia.fechaPublicacion" class="form-control " type="date" value="" id="example-date-input">
+                            </div>
+                          </div>
+                      </div>
+            
+            </div>
+            <br>
+            <br>
+            <div class="row">
+                <div *ngIf="activa_lbl_titulo_nota" class="col">
+                    <div class="col">
+                        <input [(ngModel)]="noticia.tituloNoticia" 
+                        (keypress)="soloCaracteresClave($event)"
+                        type="text" 
+                        class="form-control" 
+                        placeholder="Titúlo de la noticia" 
+                        aria-label="Titulo de la Noticia">
+                      </div>         
+                </div>
+                <div *ngIf="activa_lbl_resumen" class="col">
+                    <div class="col">
+                        <input [(ngModel)]="noticia.resumen" 
+                        (keypress)="soloCaracteresClave($event)"
+                        type="text" 
+                        class="form-control" 
+                        placeholder="Resumen" 
+                        aria-label="Resumen">
+                      </div> 
+                </div>
+                <div class="col">
+                    <div *ngIf="activa_lbl_file" class="col">
+                        <div style="width: 30rem;" class="input-group">
+                            <input #inputFile  type="file" class="form-control" id="inputFile" aria-describedby="inputGroupFileAddon04" aria-label="Upload" accept=".jpg" (change) = "onSelectFile($event.target.files[0])">
+                            <button *ngIf="activa_cmb_municipios" class="btn btn-outline-secondary" type="button" id="inputFile" (click) = "addLstPictures()">Añadir</button>
+                        </div>
+                    </div>
+                    <div *ngIf="activa_lbl_url" class="col">
+                        <div style="width: 30rem;" class="input-group">
+                            <input  [(ngModel)]="lblUrlVideosVirales"  
+                                    type="url" 
+                                    class="form-control" 
+                                    id="idlblUrlVideosVirales" 
+                                    aria-describedby="inputGroupFileAddon04" 
+                                    placeholder="URL del video" 
+                                    aria-label="Resumen"
+                                    (type) = "validaURLyoutube($event)">
+                            <!-- <button *ngIf="activa_lbl_url_alta" class="btn btn-outline-secondary" type="button" id="idlblUrlVideosVirales" (click) = "addLstUrlVideosVirales(lblUrlVideosVirales)">Añadir</button>
+                            <button *ngIf="!activa_lbl_url_alta" class="btn btn-outline-secondary" type="button" id="idlblUrlVideosVirales" (click) = "actualizarLstVideosVirales(lblUrlVideosVirales)">Actualizar</button> -->
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+            <br>
+            <br>
+            <div *ngIf="activa_redaccion" class="form-group row">
+                <div class="col">
+                    <div class="input-group">
+                        <span class="input-group-text">Redacción</span>
+                        <textarea [(ngModel)]="noticia.redaccion"
+                        (keypress)="soloCaracteresClave($event)"
+                        class="form-control" aria-label="With textarea"></textarea>
+                    </div>
+                    <br>
+                    <br>
+                </div>
+            </div>
+            
+           
+            <div class="justify-content-center" >
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <button class="btn btn-outline-primary btn-sm ms-2" (click)="detalleNoticia()">Visualizar</button>
+                        <button class="btn btn-outline-primary btn-sm ms-2 mr-2" (click)="publicarNoticia()" translate> {{ 'Publicar' }} <i class="fa fa-spinner fa-spin fa-fw" *ngIf="loading"></i></button>
+                    </div>
+                
+            </div>
+            <br>
+            <br>
+
+            <div *ngIf="activa_cmb_municipios" class="row justify-content-center col-md-12 col-md-6 col-md-3 col-sm-3">
+                <div class="" style="width: 60rem;height:15rem;">
+                    <div class="">
+                        <div id="">
+                            <table class="table table-hover table-sm float-none">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th class="text-truncate text-center" translate> {{ 'general.tabla.numero'}}</th>
+                                        <th class="text-truncate text-center" translate> {{ 'general.tabla.nombre_imagen' }} </th>
+                                        <th class="text-truncate text-center" translate> {{ 'general.tabla.accion' }} </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr  *ngFor="let result of paginaActual ; let i = index">
+                                        
+                                        <td  class="text-truncate text-center">{{i + 1}}</td>
+                                        <td class="text-truncate text-center">{{result.nombreImgUrl}}</td>
+                                        <td  class="text-truncate text-center">
+                                            <!-- icono borrar registro -->
+                                        <a  class="pl-2" style="color:blue; cursor: pointer; font-size: 18px;">
+                                            <i class="fa fa-trash" aria-hidden="true" data-toggle="tooltip" title="Borrar imagen" (click) = "eliminarImagenLst(i,result)"></i>
+                                        </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <div class="row justify-content-center p-0 pb-3">
+                                <div class="col-1 col-sm-1 col-md-1 col-lg-1">
+                                    <nav aria-label="...">
+                                        <ul class="pagination pagination-sm justify-content-center">
+                                            <li class="page-item">
+                                                <a class="page-link" tabindex="-1" (click)="paginaAnterior()"
+                                                [ngClass]="{'desactivado': numeroPaginaActual ==0 ? true:false }">
+                                                    {{ 'Anterior' }}
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <select class="page-link" (change)="establecerRegistrosMostrar($event)">
+                                                    <option *ngFor="let numRegistros of multiplosPaginador">
+                                                        {{ numRegistros }}
+                                                    </option>
+                                                </select>
+                                            </li>
+                                            <li class="page-item">
+                                                <a class="page-link" tabindex="-1" (click)="siguientePagina()"
+                                                [ngClass]="{'desactivado': numeroPaginaActual == numeroPaginas-1 || paginaActual.length<=0 ? true:false }">
+                                                    {{ 'Siguiente' }}
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+     <!-- Modal Detalle -->
+     <app-detalle-noticia [ocultarModal] = "ocultarModal"
+     [noticia] = "noticia"
+     (eventOut)="ocultarModalOut()"></app-detalle-noticia>
+
+
+
+  

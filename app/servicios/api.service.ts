@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Constants } from '../utiles/constants';
 import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { catchError, map, retry } from 'rxjs/operators';
 @Injectable({
 	providedIn: 'root'
   })
@@ -16,7 +16,7 @@ export class ApiService {
 		console.log(this.url);
   }
 	get(endpoint: string, params?: any) {
-		return this.http.get(this.url + endpoint).pipe(catchError(this.handleError));
+		return this.http.get(this.url + endpoint, {observe: 'response'}).pipe(catchError(this.handleError));
 	}
 
 	post(endpoint: string, body: any) {
@@ -26,6 +26,9 @@ export class ApiService {
 		 let options = {
 			headers: headers
 		 }
+		 console.info("SERVICIO:" + this.url + endpoint);
+		 console.info("REQUEST:" + body);
+		 console.info("HEADER:" + options);
 		return this.http.post(this.url + endpoint, body,options).pipe(catchError(this.handleError));
 	}
 
@@ -67,7 +70,7 @@ export class ApiService {
       // Server-side errors
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
-    window.alert(errorMessage);
+    // window.alert(errorMessage);
     return throwError(errorMessage);
   }
 

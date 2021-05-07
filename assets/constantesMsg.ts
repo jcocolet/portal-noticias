@@ -60,4 +60,9 @@ export class ConstantesMsg {
     public static ERROR_TIPO_CATALOGO_VACIO: any = 'Debe seleccionar el tipo de catálogo.';
     public static SUCCES_CARGA_PROCESANDO: any = 'Se realiza la carga de informacion de manera correcta.';
 
+    public static MSN_ELIMINAR: any = '¿Está seguro de eliminar la noticia?';
+    public static TITULO_ELIMINAR_NOTICIA: any = 'ELIMINAR NOTICIA';
+    public static SUCCESS_ELIMINA_NOTICIA: any = 'Se realizó la eliminación correctamente.';
+    public static ERROR_ELIMINAR_REGLA : any = 'Ocurrió un error al eliminar el registro.';
+
 }

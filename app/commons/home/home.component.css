@@ -1,0 +1,10 @@
+.main {
+    background: url("/assets/images/bckGround.jpgs");
+    /* background: url("/banca_digital/assets/images/logos.jpg"); */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 500px;
+  
+  }
